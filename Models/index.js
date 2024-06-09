@@ -3,11 +3,9 @@ import Jugadores from "./Jugadores.js";
 
 /*Agregar foreign key a jugadores?*/
 Jugadores.hasOne(Puntajes, {
-    foreignKey: idJugador
-});
-Puntajes.hasOne(Jugadores, {
-    foreignKey: idJugador
-});
+    foreignKey: "jugadorId",
+  });
+Puntajes.hasOne(Jugadores);
 
 export {
     Jugadores, Puntajes
