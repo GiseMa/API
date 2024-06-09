@@ -1,17 +1,14 @@
-import Juegos from "./Juegos.js";
+import Puntajes from "./Puntajes.js";
 import Jugadores from "./Jugadores.js";
-import JugadorJuego from "./JugadorJuego.js";
 
-/*Singular o plural? */
-/* Como establecer las relaciones many to many entre juegos y jugadores y la de puntaje*/
-
-Jugadores.belongsToMany(Juegos, {
-    through: 'JugadoresJuego'
-})
-Juegos.belongsToMany(Jugadores, {
-    through: 'JugadoresJuego'
-})
+/*Agregar foreign key a jugadores?*/
+Jugadores.hasOne(Puntajes, {
+    foreignKey: idJugador
+});
+Puntajes.hasOne(Jugadores, {
+    foreignKey: idJugador
+});
 
 export {
-    Juegos, Jugadores, JugadorJuego
+    Jugadores, Puntajes
 }

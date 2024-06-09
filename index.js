@@ -1,17 +1,11 @@
 import express from "express"
 import conexion from "./conexion/conexion.js";
 import {
-    Juegos, Jugadores, JugadorJuego
-}from './Models/index.js'
-
-
+ Jugadores, Puntajes
+} from './Models/index.js';
 
 
 const app = express();
-
-
-
-
 
 
 

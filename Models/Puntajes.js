@@ -2,22 +2,22 @@ import { DataTypes, Model } from "sequelize";
 
 import conexion from "../conexion/conexion.js";
 
-class Juegos extends Model{}
+class Puntajes extends Model{}
 
-Juegos.init (
+Puntajes.init (
 {
-    idJuego:{
+    idJugador:{
         type:DataTypes.INTEGER,
         allowNull:false,
     },
-    nombreJuego:{
-        type:DataTypes.STRING,
+    puntaje:{
+        type:DataTypes.INTEGER,
         allowNull:false,
     }
 },
 {
     sequelize:conexion,
-    modelName:"Juegos",
+    modelName:"Puntajes",
 }
 );
-export default Juegos;
+export default Puntajes;

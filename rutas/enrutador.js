@@ -1,12 +1,10 @@
 import { Router } from "express";
-import rutasJuego from "./rutasJuego.js";
 import rutasJugador from "./rutasJugador.js";
-import rutasJugadorJuego from "./rutasJugadorJuego.js";
+import rutasPuntajes from "./rutasPuntaje.js";
 
 const enrutador = Router();
 enrutador.use("/jugadores", rutasJugador);
-enrutador.use("/juegos", rutasJuego);
-enrutador.use("/jugadorJuego", rutasJugadorJuego);
+enrutador.use("/puntajes", rutasPuntajes);
 
 export default enrutador;
 
