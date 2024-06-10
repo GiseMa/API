@@ -7,6 +7,7 @@
   "scripts": {
     "start": "node --env-file .env",
     "dev": "node --watch .",
+    "seed":"node --env-file .env seed/jugadoresSeed.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
