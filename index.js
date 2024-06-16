@@ -4,9 +4,12 @@ import {
  Jugadores, Puntajes
 } from './Models/index.js';
 import jugoresSeed from "./seed/jugadoresSeed.js";
+import {PORT} from "./config/config.js"
+
 
 
 const app = express();
+
 
 
 
