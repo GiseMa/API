@@ -4,6 +4,6 @@ const rutasPuntajes = Router();
 
 const puntajeControllers = new PuntajesControlador();
 
-rutasPuntajes.post("/:id",puntajeControllers.agregarPuntajeAJugador);
+rutasPuntajes.post("/",puntajeControllers.agregarPuntajeAJugador);
 
 export default rutasPuntajes;
