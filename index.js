@@ -5,21 +5,15 @@ import {
 } from './Models/index.js';
 import jugoresSeed from "./seed/jugadoresSeed.js";
 import {PORT} from "./config/config.js"
-
-
+import enrutador from "./rutas/enrutador.js";
 
 const app = express();
-
-
-
-
-
-
-
+app.use(express.json());
+app.use("/api", enrutador);
 
 await conexion.sync({force: false});
-await jugoresSeed()
+//await jugoresSeed()
 
-app.listen(8080, () => {
+app.listen(PORT, () => {
     console.log("server Ok");
 });

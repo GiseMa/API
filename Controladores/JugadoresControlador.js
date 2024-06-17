@@ -11,7 +11,8 @@ class JugadoresControlador {
     } catch (error) {
       res.status(500).send({ success: false, message: error.message });
     }
-  };
+  }
 
  
 }
+export default JugadoresControlador

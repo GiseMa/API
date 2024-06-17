@@ -4,19 +4,6 @@ import {Jugadores, Puntajes} from "../Models/index.js";
 class PuntajesControlador{
     constructor() {}
 
-    crearJugador = async (req, res) => {
-        try {
-          const { idJugador, nombre } = req.body;
-          const jugador = await Jugadores.create({
-            idJugador,
-            nombreJugador,
-          });
-          res.status(200).send({ success: true, message: jugador });
-        } catch (error) {
-          res.status(500).send({ success: false, message: error.message });
-        }
-    };
-
     agregarPuntajeAJugador = async (req, res) => {
         try {
           const { idJugador, puntaje } = req.body;
