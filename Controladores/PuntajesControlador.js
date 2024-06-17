@@ -4,17 +4,22 @@ import {Jugadores, Puntajes} from "../Models/index.js";
 class PuntajesControlador{
     constructor() {}
 
-    agregarPuntajeAJugador = async (req, res) => {
-        try {
-          const { idJugador, puntaje } = req.body;
-          const nuevoPuntaje = await Puntajes.create({
-            idJugador,
-            puntaje,
-          });
-          res.status(200).send({ success: true, message: nuevoPuntaje });
-        } catch (error) {
-          res.status(500).send({ success: false, message: error.message });
+    actualizarPuntajeDeJugador = async (req, res) => {
+      try {
+        const { idJugador, puntaje } = req.body;
+        const existingPuntaje = await Puntajes.findOne({ where: { idJugador } });
+    
+        if (!existingPuntaje) {
+          // Handle the case where no record exists for the given idJugador
+          res.status(404).send({ success: false, message: "Jugador no encontrado" });
+          return;
         }
+    
+        await existingPuntaje.update({ puntaje });
+        res.status(200).send({ success: true, message: "Puntaje actualizado" });
+      } catch (error) {
+        res.status(500).send({ success: false, message: error.message });
+      }
     };
 
     //a chequear???

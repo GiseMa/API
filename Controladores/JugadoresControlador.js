@@ -13,6 +13,8 @@ class JugadoresControlador {
     }
   }
 
+  //agregarJugador
+
  
 }
 export default JugadoresControlador
