@@ -5,5 +5,7 @@ const rutasJugadores = Router();
 const jugadorControllers = new JugadoresControlador();
 
 rutasJugadores.get("/",jugadorControllers.mostrarJugadores);
+rutasJugadores.put('/:id', jugadorControllers.cambiarNombre);
+rutasJugadores.delete('/:id', jugadorControllers.eliminarJugador);
 
 export default rutasJugadores;
