@@ -3,7 +3,7 @@ import conexion from "./conexion/conexion.js";
 import {
  Jugadores, Puntajes
 } from './Models/index.js';
-import jugoresSeed from "./seed/seed.js";
+import seed from "./seed/seed.js";
 import {PORT} from "./config/config.js"
 import enrutador from "./rutas/enrutador.js";
 
@@ -12,7 +12,7 @@ app.use(express.json());
 app.use("/api", enrutador);
 
 await conexion.sync({force: true});
-await jugoresSeed()
+await seed()
 
 
 app.listen(PORT, () => {

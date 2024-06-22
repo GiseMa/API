@@ -1,7 +1,7 @@
 import { Jugadores, Puntajes } from "../Models/index.js"; 
 import conexion from "../conexion/conexion.js";
 
-const jugadoresSeed = async () => {
+const seed = async () => {
     try {
         await conexion.sync({ force: true }); 
         await Jugadores.bulkCreate([
@@ -17,9 +17,7 @@ const jugadoresSeed = async () => {
         console.log("Datos de jugadores insertados correctamente.");
     } catch (error) {
         console.error("Error al insertar datos de jugadores:", error);
-    } finally {
-        await conexion.close(); 
-    }
+    } 
 };
 
-export default jugadoresSeed;
+export default seed;
