@@ -1,5 +1,6 @@
 /*crearJugador, agregarPuntajeAJugador, mostrarInfo-->mostrarTopTres*/ 
 import {Jugadores, Puntajes} from "../Models/index.js";
+import conexion from "../conexion/conexion.js";
 
 class PuntajesControlador{
     constructor() {}
@@ -22,15 +23,21 @@ class PuntajesControlador{
       }
     };
 
-     getPuntajesAltos = async (req, res) => {
+    getPuntajesAltos = async (req, res) => {
       try {
-        const { limit } = req.params;
-        const query = `SELECT idJugador, puntaje FROM puntajes ORDER BY puntaje DESC LIMIT ?`;
-        const [results] = await connection.query(query, [parseInt(limit, 10)]);
-        res.status(200).send(results);
-      } catch (err) {
-        console.error('Error obteniendo los puntajes mas altos:', err);
-        res.status(500).send({ success: false, message: err.message });
+        const topTres = await Puntajes.findAll({
+          order: [['puntaje', 'DESC']],
+          limit: 3,
+          include: [{
+            model: Jugadores,
+            as: 'jugador',
+            attributes: ['idJugador', 'nombreJugador']  // Asegúrate de que el modelo Jugadores tenga un atributo 'nombre'
+          }]
+        });
+    
+        res.status(200).send({ success: true, data: topTres });
+      } catch (error) {
+        res.status(500).send({ success: false, message: error.message });
       }
     };
     
