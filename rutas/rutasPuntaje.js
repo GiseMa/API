@@ -5,5 +5,6 @@ const rutasPuntajes = Router();
 const puntajeControllers = new PuntajesControlador();
 
 rutasPuntajes.post("/",puntajeControllers.actualizarPuntajeDeJugador);
+rutasPuntajes.get("/",puntajeControllers.getPuntajesAltos);
 
 export default rutasPuntajes;

@@ -22,7 +22,18 @@ class PuntajesControlador{
       }
     };
 
-
+     getPuntajesAltos = async (req, res) => {
+      try {
+        const { limit } = req.params;
+        const query = `SELECT idJugador, puntaje FROM puntajes ORDER BY puntaje DESC LIMIT ?`;
+        const [results] = await connection.query(query, [parseInt(limit, 10)]);
+        res.status(200).send(results);
+      } catch (err) {
+        console.error('Error obteniendo los puntajes mas altos:', err);
+        res.status(500).send({ success: false, message: err.message });
+      }
+    };
+    
 }
 
 export default PuntajesControlador;
