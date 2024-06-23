@@ -77,59 +77,46 @@ Para instalar y ejecutar este proyecto, sigue estos pasos:
 Si se hizo correctamente, muestra el mensaje "server Ok"
 
 
-## Consultas sobre Jugador
+### Consultas sobre Jugador
 
+- **GET `/api/jugadores`**: Obtiene todos los jugadores.Llama al método mostrarJugadores del controlador JugadoresControlador para obtener y devolver una lista de todos los jugadores.
+- **POST `/api/jugadores`**: Agrega un nuevo jugador.Agrega un nuevo jugador. Llama al método agregarJugador del controlador JugadoresControlador para agregar un nuevo jugador a la base de datos.
+- **PUT `/api/jugadores/:idJugador`**: Actualiza el nombre de un jugador por ID. Llama al método cambiarNombre del controlador JugadoresControlador para actualizar el nombre de un jugador específico identificado por idJugador.
+- **DELETE `/api/jugadores/:idJugador`**: Elimina un jugador por ID.Llama al método eliminarJugador del controlador JugadoresControlador para eliminar un jugador específico identificado por idJugador.
 
-1. GET "/"
-Obtiene todos los jugadores.Llama al método mostrarJugadores del controlador JugadoresControlador para obtener y devolver una lista de todos los jugadores.
+### Consultas sobre Puntaje
 
-2. POST "/"
-Agrega un nuevo jugador. Llama al método agregarJugador del controlador JugadoresControlador para agregar un nuevo jugador a la base de datos.
+- **POST `/api/puntajes`**: Actualiza el puntaje de un jugador.Llama al método actualizarPuntajeDeJugador del controlador PuntajesControlador para actualizar el puntaje de un jugador específico. En el body de la solicitud,hay que agregar el id del jugador y el puntaje nuevo:
 
-3. PUT "/:idJugador"
-Actualiza el nombre de un jugador por ID. Llama al método cambiarNombre del controlador JugadoresControlador para actualizar el nombre de un jugador específico identificado por idJugador.
-
-4. DELETE "/:idJugador"
- Elimina un jugador por ID. Llama al método eliminarJugador del controlador JugadoresControlador para eliminar un jugador específico identificado por idJugador.
+[
+  {
+    "idJugador": 1,
+    "puntaje": 100
+  },
  
-
-## Consultas sobre Puntajes
-
-1. POST "/"
-Actualiza el puntaje de un jugador. Llama al método actualizarPuntajeDeJugador del controlador PuntajesControlador para actualizar el puntaje de un jugador específico. En el body de la solicitud,hay que agregar el id del jugador y el puntaje nuevo: 
-  ```json
-  [
-    {
-      "idJugador": 1,
-      "puntaje": 100
-    },
-    ...
-  ]
+]
 
 - **Respuesta**:
- ```json
-  [
-    {
-    "success": true,
-     "message": "Puntaje actualizado"
-    }
-    ...
-  ]
 
-
-2. GET "/"
-
-Obtiene los puntajes más altos.Llama al método getPuntajesAltos del controlador PuntajesControlador para obtener una lista de los puntajes más altos.
-
-- **Respuesta**:
-  ```json
-  [
-    {
-      "idJugador": 1,
-      "puntaje": 100
-    },
-    {
-    "idJugador": 2,
-    "puntaje": 180
+[
+  {
+  "success": true,
+   "message": "Puntaje actualizado"
   }
-  ]
+]
+
+- **GET `/api/puntajes`**: Obtiene los puntajes más altos.Llama al método getPuntajesAltos del controlador PuntajesControlador para obtener una lista de los puntajes más altos.
+
+- **Respuesta**:
+    ```
+    [
+      {
+        "idJugador": 1,
+        "puntaje": 200
+      },
+      {
+        "idJugador": 2,
+        "puntaje": 180
+      },
+
+    ]
