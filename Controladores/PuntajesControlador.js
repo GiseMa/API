@@ -11,7 +11,7 @@ class PuntajesControlador{
         const existingPuntaje = await Puntajes.findOne({ where: { idJugador } });
     
         if (!existingPuntaje) {
-          // Handle the case where no record exists for the given idJugador
+         
           res.status(404).send({ success: false, message: "Jugador no encontrado" });
           return;
         }
@@ -31,7 +31,7 @@ class PuntajesControlador{
           include: [{
             model: Jugadores,
             as: 'jugador',
-            attributes: ['idJugador', 'nombreJugador']  // Asegúrate de que el modelo Jugadores tenga un atributo 'nombre'
+            attributes: ['idJugador', 'nombreJugador']  
           }]
         });
     
