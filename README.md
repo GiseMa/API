@@ -113,7 +113,6 @@ Actualiza el puntaje de un jugador. Llama al método actualizarPuntajeDeJugador 
     "success": true,
      "message": "Puntaje actualizado"
     }
-    ...
   ]
 
 
