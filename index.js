@@ -11,7 +11,7 @@ const app = express();
 app.use(express.json());
 app.use("/api", enrutador);
 
-await conexion.sync({force: true});
+await conexion.sync({force: false});
 await seed()
 
 

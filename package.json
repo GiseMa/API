@@ -3,19 +3,20 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "type":"module",
+  "type": "module",
   "scripts": {
     "start": "node .",
     "dev": "node --watch .",
-    "seed":"node --env-file .env seed/jugadoresSeed.js",
+    "seed": "node --env-file .env seed/jugadoresSeed.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^5.1.1",
     "express": "^4.19.2",
-    "sequelize": "^6.37.3",
-    "mysql2":"^3.9.7"
+    "mysql2": "^3.9.7",
+    "sequelize": "^6.37.3"
   }
 }

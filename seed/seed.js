@@ -5,10 +5,13 @@ const seed = async () => {
     try {
         await conexion.sync({ force: true }); 
         await Jugadores.bulkCreate([
-            { nombreJugador: "Juli" , contrasenia: "123"},
+            { nombreJugador: "Juli", contrasenia: "123" },
             { nombreJugador: "Gise" , contrasenia: "123"},
             { nombreJugador: "Fran" , contrasenia: "123"},
-        ]);
+        ],
+    {
+        individualHooks: true,
+    });
         await Puntajes.bulkCreate([
             { idJugador: "1" },
             { idJugador: "2" },

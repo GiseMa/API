@@ -13,7 +13,6 @@ class JugadoresControlador {
     }
   }
 
-  //agregarJugador
   agregarJugador = async (req, res) => {
     try {
       const { nombreJugador, contrasenia } = req.body;
@@ -30,7 +29,7 @@ class JugadoresControlador {
     }
   }
 
-  cambiarNombre = async (req, res) => {
+  cambiarDatos = async (req, res) => {
     try {
       const { idJugador } = req.params;
       const jugadorActualizado = await Jugadores.update(req.body, { where: { idJugador } });
@@ -50,7 +49,26 @@ class JugadoresControlador {
     }
   }
 
+  login = async (req, res) => {
+    try {
+      const { nombreJugador, contrasenia } = req.body;
+      const data = await Jugadores.findOne({ 
+        where: {
+          nombreJugador,
+        },
+      });
+      const  datosIncorrectos = "Los datos de ingreso son incorrectos";
+      if (!data) throw new Error(datosIncorrectos);
+      const validacion = await data.validacionContrasenia(contrasenia)
+      if (!validacion) throw new Error(datosIncorrectos);
+
+      res.status(200).send({succes: true, message:data})
+    }catch(error){
+      res.status(500).send({succes: false, message: error.message})
+    }
+
+}
 }
 
 
-export default JugadoresControlador
+export default JugadoresControlador;
