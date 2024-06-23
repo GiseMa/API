@@ -6,8 +6,23 @@ class JugadoresControlador {
 
   mostrarJugadores = async (req, res) => {
     try {
-      const data = await Jugadores.findAll();
-      res.status(200).send({ success: true, message: data });
+      const jugadores = await Jugadores.findAll({ attributes: ['idJugador', 'nombreJugador'] });
+      const jugadoresConPuntaje = [];
+
+      for (const jugador of jugadores) {
+        const puntaje = await Puntajes.findOne({ 
+          where: { idJugador: jugador.idJugador },
+          attributes: ['puntaje']
+        });
+
+        jugadoresConPuntaje.push({
+          idJugador: jugador.idJugador,
+          nombreJugador: jugador.nombreJugador,
+          puntaje: puntaje.puntaje
+        });
+      }
+
+      res.status(200).send({ success: true, data: jugadoresConPuntaje });
     } catch (error) {
       res.status(500).send({ success: false, message: error.message });
     }
