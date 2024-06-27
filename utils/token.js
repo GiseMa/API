@@ -1,4 +1,4 @@
-import jwt from "jsonwebtoken";
+ import jwt from "jsonwebtoken";
 import { SECRET } from "../config/config.js";
 
 export const generadorDeToken = (payload) =>{
@@ -10,4 +10,4 @@ export const generadorDeToken = (payload) =>{
 export const decodificador = (token) => {
     const decodificado = jwt.verify(token, SECRET);
     return decodificado;
-  };
+  }; 

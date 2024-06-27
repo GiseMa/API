@@ -3,7 +3,6 @@ import { generadorDeToken, decodificador } from "../utils/token.js";
 
 class JugadoresControlador {
   constructor() { }
-  /*guardarPuntaje, mostrarDatos*/
 
   mostrarJugadores = async (req, res) => {
     try {
@@ -41,7 +40,7 @@ class JugadoresControlador {
 
       res.status(201).send({ success: true, message: "Jugador y puntaje creados exitosamente" });
     } catch (error) {
-      res.status(500).send({ success: false, message: error.message });
+      res.status(500).send({ success: false, message: "El nombre de jugador ya existe" });
     }
   }
 
@@ -57,9 +56,9 @@ class JugadoresControlador {
 
   eliminarJugador = async (req, res) => {
     try {
-      const { id } = req.params;
-      await Jugadores.destroy({ where: { id } });
-      res.status(200).send({ success: true, message: `El jugador con id ${id} fue eliminado` })
+      const { idJugador } = req.params;
+      await Jugadores.destroy({ where: { idJugador } });
+      res.status(200).send({ success: true, message: `El jugador con id ${idJugador} fue eliminado` })
     } catch (error) {
       res.status(500).send({ success: false, message: error.message });
     }
@@ -80,24 +79,23 @@ class JugadoresControlador {
       const validacion = await data.validacionContrasenia(contrasenia)
       if (!validacion) throw new Error(datosIncorrectos);
 
-   /* 
+
     const payload = {
         id: data.idJugador,
         nombre: data.nombreJugador,
       }
       const token = generadorDeToken(payload)
 
-      res.cookie("Token", token) 
-    */
+      res.cookie("token", token) 
 
       res.status(200).send({succes: true, message:"¡Bienvenido!"})
     }catch(error){
       res.status(500).send({succes: false, message: error.message})
     }
 
-}
+};
 
-/* me = async (req, res) => {
+me = async (req, res) => {
   try {
     const { jugador } = req;
     if (!jugador) throw new Error("¡Tenes que loguearte!");
@@ -105,7 +103,7 @@ class JugadoresControlador {
   } catch (error) {
     res.status(500).send({ success: false, message: error.message });
   }
-};  */
+};  
 }
 
 

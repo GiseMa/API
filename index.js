@@ -9,7 +9,7 @@ const app = express();
 
 app.use(express.json());
 
-/* app.use(cookieParser) */
+app.use(cookieParser()) 
  app.use("/api", enrutador);
 
 await conexion.sync({force: false});
