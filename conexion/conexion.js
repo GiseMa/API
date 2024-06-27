@@ -17,7 +17,6 @@ import {
 
 try {
     await conexion.authenticate();
-    console.log('Connection has been established successfully.');
     console.log('conexion a la BD hecha todo OKK');
   } catch (error) {
     console.error('Unable to connect to the database:', error);

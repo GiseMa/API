@@ -10,6 +10,8 @@ const seed = async () => {
             { nombreJugador: "Fran" , contrasenia: "123"},
         ],
     {
+        //Con el bulkCreate no se emiten los hooks indiduales. Esto lo que hace
+        //es garantizar que c/registro pase por el hook
         individualHooks: true,
     });
         await Puntajes.bulkCreate([

@@ -1,15 +1,16 @@
 import express from "express"
-import conexion from "./conexion/conexion.js";
-import {
- Jugadores, Puntajes
-} from './Models/index.js';
-import seed from "./seed/seed.js";
-import {PORT} from "./config/config.js"
 import enrutador from "./rutas/enrutador.js";
+import conexion from "./conexion/conexion.js";
+import {PORT} from "./config/config.js"
+import seed from "./seed/seed.js";
+import cookieParser from "cookie-parser";
 
 const app = express();
+
 app.use(express.json());
-app.use("/api", enrutador);
+
+/* app.use(cookieParser) */
+ app.use("/api", enrutador);
 
 await conexion.sync({force: false});
 await seed()

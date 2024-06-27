@@ -45,7 +45,6 @@ Jugadores.init({
 
 Jugadores.beforeCreate(async (jugador) => {
     const salt = await bcrypt.genSalt();
-    console.log("Jugador.beforeCreate", salt);
     jugador.salt = salt;
     const passwordHash = await bcrypt.hash(jugador.contrasenia, salt);
     jugador.contrasenia = passwordHash; 

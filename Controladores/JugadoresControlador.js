@@ -1,4 +1,5 @@
 import { Jugadores, Puntajes } from "../Models/index.js";
+import { generadorDeToken, decodificador } from "../utils/token.js";
 
 class JugadoresControlador {
   constructor() { }
@@ -72,17 +73,39 @@ class JugadoresControlador {
           nombreJugador,
         },
       });
+
       const  datosIncorrectos = "Los datos de ingreso son incorrectos";
       if (!data) throw new Error(datosIncorrectos);
+
       const validacion = await data.validacionContrasenia(contrasenia)
       if (!validacion) throw new Error(datosIncorrectos);
 
-      res.status(200).send({succes: true, message:data})
+   /* 
+    const payload = {
+        id: data.idJugador,
+        nombre: data.nombreJugador,
+      }
+      const token = generadorDeToken(payload)
+
+      res.cookie("Token", token) 
+    */
+
+      res.status(200).send({succes: true, message:"¡Bienvenido!"})
     }catch(error){
       res.status(500).send({succes: false, message: error.message})
     }
 
 }
+
+/* me = async (req, res) => {
+  try {
+    const { jugador } = req;
+    if (!jugador) throw new Error("¡Tenes que loguearte!");
+    res.status(200).send({ success: true, message: jugador});
+  } catch (error) {
+    res.status(500).send({ success: false, message: error.message });
+  }
+};  */
 }
 
 
