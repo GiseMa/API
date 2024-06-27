@@ -79,14 +79,20 @@ Si se hizo correctamente, muestra el mensaje "server Ok"
 
 ### Consultas sobre Jugador
 
-- **GET `/api/jugadores`**: Obtiene todos los jugadores.Llama al método mostrarJugadores del controlador JugadoresControlador para obtener y devolver una lista de todos los jugadores.
+- **GET `/api/jugadores`**: Obtiene todos los jugadores.Llama al método mostrarJugadores del controlador JugadoresControlador para obtener y devolver una lista de todos los jugadores. Debe haber iniciado sesion para poder ejecutar
 - **POST `/api/jugadores`**: Agrega un nuevo jugador.Agrega un nuevo jugador. Llama al método agregarJugador del controlador JugadoresControlador para agregar un nuevo jugador a la base de datos.
-- **PUT `/api/jugadores/:idJugador`**: Actualiza el nombre de un jugador por ID. Llama al método cambiarNombre del controlador JugadoresControlador para actualizar el nombre de un jugador específico identificado por idJugador.
-- **DELETE `/api/jugadores/:idJugador`**: Elimina un jugador por ID.Llama al método eliminarJugador del controlador JugadoresControlador para eliminar un jugador específico identificado por idJugador.
+- **PUT `/api/jugadores/:idJugador`**: Actualiza el nombre de un jugador por ID. Llama al método cambiarNombre del controlador JugadoresControlador para actualizar el nombre de un jugador específico identificado por idJugador. Debe haber iniciado sesion para poder ejecutar
+- **DELETE `/api/jugadores/:idJugador`**: Elimina un jugador por ID.Llama al método eliminarJugador del controlador JugadoresControlador para eliminar un jugador específico identificado por idJugador. Debe haber iniciado sesion para poder ejecutar.
+-**POST `/api/jugadores/login`**: Permite ingresar pasando nombre y constraseña a traves del body. Si los datos son correctos o incorrectos avisa por pantalla. 
+ [{
+  "nombreJugador": "Juli",
+  "contrasenia": "123"
+  }
+  ]
 
 ### Consultas sobre Puntaje
 
-- **POST `/api/puntajes`**: Actualiza el puntaje de un jugador.Llama al método actualizarPuntajeDeJugador del controlador PuntajesControlador para actualizar el puntaje de un jugador específico. En el body de la solicitud,hay que agregar el id del jugador y el puntaje nuevo:
+- **POST `/api/puntajes`**: Actualiza el puntaje de un jugador.Llama al método actualizarPuntajeDeJugador del controlador PuntajesControlador para actualizar el puntaje de un jugador específico. En el body de la solicitud,hay que agregar el id del jugador y el puntaje nuevo. Debe haber iniciado sesion para poder ejecutar 
 
 [
   {
@@ -105,7 +111,7 @@ Si se hizo correctamente, muestra el mensaje "server Ok"
   }
 ]
 
-- **GET `/api/puntajes`**: Obtiene los puntajes más altos.Llama al método getPuntajesAltos del controlador PuntajesControlador para obtener una lista de los puntajes más altos.
+- **GET `/api/puntajes`**: Obtiene los puntajes más altos.Llama al método getPuntajesAltos del controlador PuntajesControlador para obtener una lista de los puntajes más altos. Debe haber iniciado sesion para poder ejecutar
 
 - **Respuesta**:
     ```
