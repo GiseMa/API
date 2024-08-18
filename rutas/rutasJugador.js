@@ -10,7 +10,8 @@ rutasJugadores.post("/",jugadorControllers.agregarJugador);
 rutasJugadores.post("/login",jugadorControllers.login);
 
 rutasJugadores.get("/me", sesionVerificada, jugadorControllers.me);
- rutasJugadores.use(sesionVerificada)
+
+rutasJugadores.use(sesionVerificada)
 rutasJugadores.get("/",jugadorControllers.mostrarJugadores);
 rutasJugadores.put('/:idJugador', jugadorControllers.cambiarDatos);
 rutasJugadores.delete('/:idJugador', jugadorControllers.eliminarJugador);
